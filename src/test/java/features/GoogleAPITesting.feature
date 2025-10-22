@@ -1,6 +1,6 @@
 Feature: Test the Add/update/Delete place API
 
-@AddPlace
+@AddPlace @Regression
 Scenario Outline: validate the Add Place Api
 Given valid "POST" request payload "<name>" "<language>" "<address>" "<addressToUpdate>"
 When submit the "AddPlaceAPI" with "POST" request
@@ -11,7 +11,7 @@ Then validate the "scope" field of the response body is "APP"
 And verify "name" created maps to "<name>" using "GetPlaceAPI"
 
 
-@AddPlace
+@updatePlace @Regression
 Scenario: Validate the Update place API
 Given valid "PUT" request payload "<name>" "<language>" "<address>" "<addressToUpdate>"
 When submit the "UpdatePlaceAPI" with "PUT" request
@@ -19,14 +19,14 @@ Then validate whether the reponse is 200
 Then validate the "msg" field of the response body is "Address successfully updated"
 
 
-@AddPlace
+@DeletePlace @Regression
 Scenario: Validate the Delete place API
 Given valid "DELETE" request payload "<name>" "<language>" "<address>" "<addressToUpdate>"
 When submit the "DeletePlaceAPI" with "DELETE" request
 Then validate whether the reponse is 200
 Then validate the "status" field of the response body is "OK"
 
-@AddPlace
+@AddPlace @Regression
 Scenario: validate the Add Place Api with wrong test data
 Given valid "POST" request payload "<name>" "<language>" "<address>" "<addressToUpdate>"
 When submit the "wrongAddPlaceAPI" with "POST" request wrong test data
