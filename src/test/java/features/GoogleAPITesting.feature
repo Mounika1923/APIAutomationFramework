@@ -11,7 +11,7 @@ Then validate the "scope" field of the response body is "APP"
 And verify "name" created maps to "<name>" using "GetPlaceAPI"
 
 
-@UpdatePlace
+@AddPlace
 Scenario: Validate the Update place API
 Given valid "PUT" request payload "<name>" "<language>" "<address>" "<addressToUpdate>"
 When submit the "UpdatePlaceAPI" with "PUT" request
@@ -19,17 +19,18 @@ Then validate whether the reponse is 200
 Then validate the "msg" field of the response body is "Address successfully updated"
 
 
-@DeletePlace
+@AddPlace
 Scenario: Validate the Delete place API
 Given valid "DELETE" request payload "<name>" "<language>" "<address>" "<addressToUpdate>"
 When submit the "DeletePlaceAPI" with "DELETE" request
 Then validate whether the reponse is 200
 Then validate the "status" field of the response body is "OK"
 
+@AddPlace
 Scenario: validate the Add Place Api with wrong test data
 Given valid "POST" request payload "<name>" "<language>" "<address>" "<addressToUpdate>"
 When submit the "wrongAddPlaceAPI" with "POST" request wrong test data
-Then validate whether the reponse is 200
+Then validate whether the reponse is 404
 
 Examples:
 |  name | language | address  |addressToUpdate|
